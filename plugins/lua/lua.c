@@ -24,11 +24,12 @@
 
 #include "MKPlugin.h"
 
-#include "test.h"
+#include <lua.h>
+#include <lauxlib.h>
 
 
-MONKEY_PLUGIN("test",              /* shortname */
-              "Test plugin",    /* name */
+MONKEY_PLUGIN("lua",              /* shortname */
+              "Lua scripting support plugin",    /* name */
               VERSION,             /* version */
               MK_PLUGIN_STAGE_30); /* hooks */
 
@@ -56,6 +57,8 @@ int _mkp_stage_30(struct plugin *plugin,
     short int is_restricted = MK_FALSE;
     mk_ptr_t res;
     (void) plugin;
+    (void)  cs;
+    (void) sr;
     PLUGIN_TRACE("[FD %i] Handler received request");
     return MK_PLUGIN_RET_NOT_ME;
 }
